@@ -253,6 +253,7 @@
 
 .lp-scarcity span {
   display: inline-block;
+  margin-inline-start: 0.2rem;
   transform: scale(1.06);
 }
 
