@@ -142,3 +142,202 @@
     color: var(--color-foreground);
   }
 }
+
+/* ============================================================
+   Landing page — Açaí + Barato (tokens & animações)
+   ============================================================ */
+
+:root {
+  --lp-purple: oklch(0.2 0.096 318.6);      /* #2b0133 */
+  --lp-neon: oklch(0.866 0.297 142.5);      /* #00ff00 */
+  --lp-yellow: oklch(0.968 0.211 109.77);   /* #ffff00 */
+  --lp-black: oklch(0 0 0);
+  --lp-white: oklch(1 0 0);
+  --lp-glow: 0 0 24px oklch(0.866 0.297 142.5 / 60%), 0 0 64px oklch(0.866 0.297 142.5 / 35%);
+}
+
+@layer base {
+  html,
+  body {
+    background-color: var(--lp-purple);
+  }
+}
+
+.lp-shell {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  background-color: var(--lp-purple);
+  font-family: "Montserrat", system-ui, sans-serif;
+}
+
+.lp-frame {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--lp-purple);
+}
+
+/* SEÇÃO 1 — faixa superior */
+.lp-topbar {
+  width: 100%;
+  background-color: var(--lp-neon);
+  padding: 0.9rem 1rem;
+  text-align: center;
+  animation: lp-fade-in 0.7s ease-out both;
+}
+
+.lp-topbar p {
+  color: var(--lp-black);
+  font-weight: 900;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  line-height: 1.25;
+  margin: 0;
+}
+
+/* SEÇÃO 2 — banner original, sem cortes */
+.lp-banner {
+  width: 100%;
+  line-height: 0;
+  animation: lp-fade-in 0.9s ease-out 0.1s both;
+}
+
+.lp-banner img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* SEÇÃO 3 — oferta */
+.lp-offer {
+  text-align: center;
+  padding: 2.25rem 1.5rem 1.25rem;
+}
+
+.lp-offer-title {
+  color: var(--lp-neon);
+  font-weight: 900;
+  font-size: clamp(2.4rem, 9vw, 3.1rem);
+  line-height: 1.05;
+  margin: 0;
+  text-shadow: 0 0 22px oklch(0.866 0.297 142.5 / 45%);
+}
+
+.lp-offer-sub {
+  color: var(--lp-yellow);
+  font-weight: 800;
+  font-size: clamp(1.5rem, 6vw, 2rem);
+  margin: 0.6rem 0 0;
+}
+
+/* SEÇÃO 4 — escassez */
+.lp-scarcity {
+  margin: 1.75rem 1.25rem 0;
+  background-color: var(--lp-white);
+  border-radius: 1.25rem;
+  padding: 1.35rem 1rem;
+  text-align: center;
+  box-shadow: 0 8px 32px oklch(0 0 0 / 35%);
+}
+
+.lp-scarcity p {
+  color: var(--lp-black);
+  font-weight: 900;
+  font-size: clamp(1.6rem, 6.5vw, 2.1rem);
+  margin: 0;
+}
+
+.lp-scarcity span {
+  display: inline-block;
+  transform: scale(1.06);
+}
+
+/* SEÇÃO 5 — CTA */
+.lp-cta-wrap {
+  display: flex;
+  justify-content: center;
+  padding: 2.5rem 1.25rem 3.25rem;
+}
+
+.lp-cta {
+  display: block;
+  width: 100%;
+  max-width: 26rem;
+  background-color: var(--lp-neon);
+  color: var(--lp-black);
+  font-family: inherit;
+  font-weight: 900;
+  font-size: clamp(1.5rem, 6.5vw, 2rem);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  text-align: center;
+  text-decoration: none;
+  padding: 1.15rem 1.5rem;
+  border-radius: 1.1rem;
+  box-shadow: var(--lp-glow);
+  transition: transform 0.2s ease, filter 0.2s ease;
+  animation: lp-pulse 1.6s ease-in-out infinite;
+}
+
+.lp-cta:hover,
+.lp-cta:focus-visible {
+  transform: scale(1.04);
+  filter: brightness(1.12);
+}
+
+.lp-cta:active {
+  transform: scale(0.98);
+}
+
+/* Animações */
+@keyframes lp-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes lp-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: var(--lp-glow);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 36px oklch(0.866 0.297 142.5 / 85%), 0 0 90px oklch(0.866 0.297 142.5 / 50%);
+  }
+}
+
+.lp-fade {
+  animation: lp-fade-in 0.8s ease-out both;
+}
+
+.lp-offer.lp-fade {
+  animation-delay: 0.2s;
+}
+
+.lp-fade:nth-of-type(4) {
+  animation-delay: 0.35s;
+}
+
+.lp-fade:nth-of-type(5) {
+  animation-delay: 0.5s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lp-cta,
+  .lp-fade,
+  .lp-topbar,
+  .lp-banner {
+    animation: none;
+  }
+}
