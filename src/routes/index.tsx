@@ -49,7 +49,7 @@ function Index() {
         {/* SEÇÃO 2 — BANNER (imagem original, sem cortes) */}
         <section className="lp-banner">
           <img
-            src={bannerAcai.url}
+            src="/banner-acai.jpg"
             alt="Açaí + Barato — Qualidade que cabe no bolso. Frescura diária, delivery rápido, sabor imbatível."
             width={1400}
             height={775}
