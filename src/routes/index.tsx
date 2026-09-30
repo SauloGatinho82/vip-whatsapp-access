@@ -79,8 +79,8 @@ function Index() {
             rel="noopener noreferrer"
             className="lp-cta"
             onClick={() => {
-              if (window.fbq) {
-                  window
+              (window as any).fbq?.('trackCustom', 'CliqueWhatsApp');
+            }}
           >
             ENTRAR AGORA
           </a>
