@@ -78,6 +78,9 @@ function Index() {
             target="_blank"
             rel="noopener noreferrer"
             className="lp-cta"
+            onClick={() => {
+              if (window.fbq) {
+                  window
           >
             ENTRAR AGORA
           </a>
